@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Webpage</title>
+	</head>
+	<style>
+		html {
+			/* custom props */
+			--border-radius: 8px;
+		}
+		body {
+			font-size: 16px;
+			margin: 24px;
+		}
+		#content {
+			min-width: 500px;
+			margin: auto;
+		}
+
+		#main {
+			min-height: 300px;
+			max-width: 350px;
+
+			border: 0.25px solid grey;
+			border-radius: var(--border-radius);
+
+			display: flex;
+
+			flex-direction: column;
+			gap: 8px;
+			padding: 16px;
+		}
+
+		/* styles for inputs form */
+		#inputs-container {
+			border: 0.25px solid grey;
+			border-radius: var(--border-radius);
+			width: 100%;
+		}
+		.input {
+			display: flex;
+			align-items: center;
+			margin: 16px;
+			gap: 16px;
+		}
+
+		/* styles for results table */
+		#results-container {
+			width: 100%;
+			height: 100%;
+
+			display: flex;
+			justify-content: start;
+			align-items: start;
+
+			/* border: 0.25px solid grey; */
+			border-radius: var(--border-radius);
+		}
+		td,
+		th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+	<body>
+		<content id="content">
+			<div id="main">
+				<div id="intro">
+					<h2>Placeholder title</h2>
+					<p>
+						This is just a placeholder preamble. It will be replaced with a proper introduction to the point
+						of this thing.
+					</p>
+				</div>
+				<form id="inputs-container">
+					<div class="input">
+						<label for="diameter_1">Diameter 1</label>
+						<input type="number" id="diameter_1" required min="0" />
+					</div>
+					<div class="input">
+						<label for="diameter_2">Diameter 2</label>
+						<input type="number" id="diameter_2" required min="0" />
+					</div>
+					<div class="input">
+						<input id="calculate_button" type="submit" value="Calculate" />
+					</div>
+				</form>
+				<div id="results-container">
+					<table id="results-table">
+						<tr>
+							<th>Target Temporal Rotation</th>
+							<th>Result</th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</content>
+	</body>
+	<script>
+		const resultsTable = document.getElementById("results-table");
+		const calculateButton = document.getElementById("calculate_button");
+
+		const PLACEHOLDER_EXAMPLE_RESULTS = [
+			0.26612170926809364, 0.5319310280372177, 0.7968288209412757, 1.0598152605656639, 1.3195928316768828,
+			1.5747990961608251, 1.8242442309862688, 2.0670715984627646, 2.302821654812292, 2.531419526553662,
+			2.7531188298132965, 2.9684297190068887, 3.1780491213029793, 3.382801990242534, 3.5835962232140313,
+			3.781390455794679, 3.977172413397649,
+		];
+		// generates a list of values from 5 to 90 in increments of 5
+		const TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: 18 }, (_, i) => 5 * (i + 1));
+
+		// write function to call a script or api to get the calculation results
+		const getCalculationsForFemoralRotationDegreeRange = (diameter1, diameter2) => {
+			return PLACEHOLDER_EXAMPLE_RESULTS;
+		};
+
+		// aux function to create the table rows of results
+		const createTableRows = (results) => {
+			const tableRows = results.map((result, index) => {
+				return `<tr>
+		            <td>${TARGET_FEMORAL_ROTATIONS_IN_DEGREES[index]}°</td>
+		            <td class="result">${result ? result : NaN}</td>
+		        </tr>`;
+			});
+			return tableRows.join("");
+		};
+
+		// whem ca;cukate button is clicked, get the values from the inputs and call the function to get the results and display them
+		const onCalculate = (event) => {
+			const diameter1 = document.getElementById("diameter_1").value;
+			const diameter2 = document.getElementById("diameter_2").value;
+
+			if (diameter1 === "" || diameter2 === "") return;
+
+			event.preventDefault();
+
+			const results = getCalculationsForFemoralRotationDegreeRange(diameter1, diameter2);
+			resultsTable.innerHTML = resultsTable.innerHTML + createTableRows(results);
+		};
+		calculateButton.addEventListener("click", onCalculate);
+	</script>
+</html>
