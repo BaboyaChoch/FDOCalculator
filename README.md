@@ -6,7 +6,7 @@
       - in `$whatever-your-project-folder-is/scripts` run  `python -u main.py`
     ![image](https://github.com/BaboyaChoch/public_lab/assets/43709146/dc1c7f06-1f44-45b3-a7d2-7c28b740879f)
 
-#### Option 2: Google Co-Labs
+#### Option 2: Google Co-Labs (google requires an account to run)
   - visit [this link to google co-labs](https://colab.research.google.com/drive/1T8-bxJjhIzyfIvCnyVN9GO-75agI0hxE?usp=sharing)
   - just click run button
     ![run_colab](https://github.com/BaboyaChoch/public_lab/assets/43709146/83bc6da9-a422-487f-a728-e4d18d9ab8f4)
