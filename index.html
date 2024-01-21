@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>My Webpage</title>
 	</head>
+	<!-- @TODO move to styles.css file in root folder and refernece it from this file-->
 	<style>
 		html {
 			/* custom props */
@@ -21,12 +22,14 @@
 
 		#main {
 			min-height: 300px;
-			max-width: 350px;
+			max-width: 375px;
 
 			border: 0.25px solid grey;
 			border-radius: var(--border-radius);
 
 			display: flex;
+			justify-content: center;
+			align-items: center;
 
 			flex-direction: column;
 			gap: 8px;
@@ -52,8 +55,8 @@
 			height: 100%;
 
 			display: flex;
-			justify-content: start;
-			align-items: start;
+			justify-content: center;
+			align-items: center;
 
 			/* border: 0.25px solid grey; */
 			border-radius: var(--border-radius);
@@ -102,20 +105,19 @@
 			</div>
 		</content>
 	</body>
+	<!-- @TODO move to index.js file in root folder and reference it from this file -->
 	<script>
 		const resultsTable = document.getElementById("results-table");
 		const calculateButton = document.getElementById("calculate_button");
 
 		const PLACEHOLDER_EXAMPLE_RESULTS = [
-			0.26612170926809364, 0.5319310280372177, 0.7968288209412757, 1.0598152605656639, 1.3195928316768828,
-			1.5747990961608251, 1.8242442309862688, 2.0670715984627646, 2.302821654812292, 2.531419526553662,
-			2.7531188298132965, 2.9684297190068887, 3.1780491213029793, 3.382801990242534, 3.5835962232140313,
-			3.781390455794679, 3.977172413397649,
+			0.26612, 0.53193, 0.79683, 1.05982, 1.31959, 1.5748, 1.82424, 2.06707, 2.30282, 2.53142, 2.75312, 2.96843,
+			3.17805, 3.3828, 3.5836, 3.78139, 3.97717, 4.17195,
 		];
 		// generates a list of values from 5 to 90 in increments of 5
-		const TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: 18 }, (_, i) => 5 * (i + 1));
+		const TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: 19 }, (_, i) => 5 * (i + 1));
 
-		// write function to call a script or api to get the calculation results
+		// @TODO write function to call a script or api to get the calculation results
 		const getCalculationsForFemoralRotationDegreeRange = (diameter1, diameter2) => {
 			return PLACEHOLDER_EXAMPLE_RESULTS;
 		};

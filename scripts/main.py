@@ -32,21 +32,25 @@ class EllipticalArchLengthCalculator:
     if step < 1:
       raise Exception(f"step {step} is lower than 1")
       return;
-    caculation = [self.getCalculationForTargetRotationInDegrees(deg) for deg in range(lowerBound, upperBound, step)]
+    caculation = [self.getCalculationForTargetRotationInDegrees(deg) for deg in range(lowerBound, upperBound+1, step)]
     self.result = caculation
     return caculation
 
+# retuns an array of calculations for a given target femoral rotation range in degrees to 5 decimal points of precision
 def getCalculationsForTargetFemoralRotationRange(diameter_1, diameter_2):
   calc = EllipticalArchLengthCalculator(diameter_1,diameter_2)
   target_low_bound = 5
   target_upper_bound = 90
   step = 5
-  return calc.getAllCalculationsForTargetDegreeRotationRange(target_low_bound,target_upper_bound, step)
+  return [float("{:.5f}".format(result) ) for result in calc.getAllCalculationsForTargetDegreeRotationRange(target_low_bound,target_upper_bound, step)]
 
   # Example 1 with diameter_1 = 3.05, diameter_2 = 2.23
 
 results = getCalculationsForTargetFemoralRotationRange(3.05, 2.23)
 
+print(f"Results: {results} \n")
+
+print("Beautified Results:")
 current_femoral_degree_target = 5
 for result in results:
   print(f"{current_femoral_degree_target}°: {result}")
