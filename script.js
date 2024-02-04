@@ -28,8 +28,8 @@ const createTableRows = (results) => {
 
 // whem calculate button is clicked, get the values from the inputs and call the function to get the results and display them
 const onCalculate = (event) => {
-	const diameter1 = parseInt(document.getElementById("diameter_1").value);
-	const diameter2 = parseInt(document.getElementById("diameter_2").value);
+	const diameter1 = parseFloat(document.getElementById("diameter_1").value);
+	const diameter2 = parseFloat(document.getElementById("diameter_2").value);
 
 	if (diameter1 === "" || diameter2 === "") return;
 
