@@ -7,14 +7,15 @@ const inputError = document.getElementById("error");
 const resultsTable = document.getElementById("results-table");
 const RESULTS_HEADER = resultsTable.innerHTML;
 
-const getStep = () => document.getElementById("step").value;
+const getDegreeStep = () => document.getElementById("degreeStep").value;
 
-const getIncrementStart = () => document.getElementById("IncrementStart").value;
+const getDegreeStart = () => document.getElementById("degreeStart").value;
 
 const getUnit = () => document.querySelector('input[name="unit"]:checked').value;
 
 // @TODO write function to call a script or api to get the calculation results
-const getResults = (diameter1, diameter2) => FDOCalcualtor.calculate(diameter1, diameter2, getUnit(),getIncrementStart(),getStep());
+const getResults = (diameter1, diameter2) =>
+	FDOCalcualtor.calculate(diameter1, diameter2, getUnit(), getDegreeStart(), getDegreeStep());
 
 // aux function to create the table rows of results
 const createTableRows = (results) => {

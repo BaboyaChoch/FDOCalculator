@@ -6,22 +6,29 @@ class FDOCalculator {
 	static #DECIMAL_PLACES_FOR_IN = 2;
 	constructor() {}
 
-	static calculate(diameter1, diameter2, unit, IncrementStart, step) {
+	static calculate(diameter1, diameter2, unit, degreeStart, degreeStep) {
+		degreeStart = parseFloat(degreeStart);
+		degreeStep = parseFloat(degreeStep);
+		let TARGET_FEMORAL_ROTATIONS_IN_DEGREES = [];
+
 		const results = new Map();
-		let TARGET_FEMORAL_ROTATIONS_IN_DEGREES = [];  
-		const x = Math.ceil(90/step)
-		IncrementStart = parseInt(IncrementStart)
-		step = parseInt(step)
-		if(IncrementStart===0) 
-		{TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => step * (i+1))}
-		else 
-		{TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => IncrementStart + step * (i))}
+		const arrayLength = Math.ceil(90 / degreeStep);
+
+		if (degreeStart === 0) {
+			TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: arrayLength }, (_, i) => degreeStep * (i + 1));
+		} else {
+			TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from(
+				{ length: arrayLength },
+				(_, i) => degreeStart + degreeStep * i
+			);
+		}
+
 		for (const deg of TARGET_FEMORAL_ROTATIONS_IN_DEGREES) {
 			results.set(deg, this.#getSimpsonsRuleResult(diameter1, diameter2, deg, unit));
 		}
+
 		return results;
 	}
-
 	static #f(diameter1, diameter2, t) {
 		return Math.sqrt(diameter1 ** 2 * Math.sin(t) ** 2 + diameter2 ** 2 * Math.cos(t) ** 2);
 	}

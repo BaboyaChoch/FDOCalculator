@@ -35,9 +35,11 @@ body {
 }
 .input {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
 	margin: 16px;
-	gap: 16px;
+	gap: 2px;
 }
 #error {
 	display: flex;
@@ -46,6 +48,9 @@ body {
 	gap: 16px;
 	color: red;
 	display: none;
+}
+label {
+	font-weight: bold;
 }
 
 /* styles for results table */
