@@ -8,10 +8,14 @@ class FDOCalculator {
 
 	static calculate(diameter1, diameter2, unit, IncrementStart, step) {
 		const results = new Map();
+		let TARGET_FEMORAL_ROTATIONS_IN_DEGREES = [];  
 		const x = Math.ceil(90/step)
 		IncrementStart = parseInt(IncrementStart)
 		step = parseInt(step)
-		const TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => IncrementStart + step * (i));
+		if(IncrementStart===0) 
+		{TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => step * (i+1))}
+		else 
+		{TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => IncrementStart + step * (i))}
 		for (const deg of TARGET_FEMORAL_ROTATIONS_IN_DEGREES) {
 			results.set(deg, this.#getSimpsonsRuleResult(diameter1, diameter2, deg, unit));
 		}
