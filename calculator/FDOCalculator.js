@@ -1,15 +1,18 @@
 // Femoral Derotation Osteotomy Calculator
 class FDOCalculator {
-	static #TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: 18 }, (_, i) => 5 * (i + 1));
 	static #A = 0;
 	static #N = 4;
 	static #DECIMAL_PLACES_FOR_MM = 1;
 	static #DECIMAL_PLACES_FOR_IN = 2;
 	constructor() {}
 
-	static calculate(diameter1, diameter2, unit) {
+	static calculate(diameter1, diameter2, unit, IncrementStart, step) {
 		const results = new Map();
-		for (const deg of this.#TARGET_FEMORAL_ROTATIONS_IN_DEGREES) {
+		const x = Math.ceil(90/step)
+		IncrementStart = parseInt(IncrementStart)
+		step = parseInt(step)
+		const TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: x }, (_, i) => IncrementStart + step * (i));
+		for (const deg of TARGET_FEMORAL_ROTATIONS_IN_DEGREES) {
 			results.set(deg, this.#getSimpsonsRuleResult(diameter1, diameter2, deg, unit));
 		}
 		return results;
