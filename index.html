@@ -38,13 +38,14 @@
 					</div>
 					<div class="input">
 						<label for="degreeStart">Degree Start</label>
-						<input type="number" id="degreeStart" required min="0" />
+						<input type="number" id="degreeStart" required min="0" max="90"/>
 					</div>
 					<div class="input">
 						<label for="degreeStep">Degree Increment</label>
 						<input type="number" id="degreeStep" required min="0" />
 					</div>
-					<div id="error">Input the larger diameter in 'Diameter 1' input field</div>
+					<div id="error"></div>
+					<div id="resultsDisclaimer">Results generated only for target femoral rotations up to 90°</div>
 					<div class="input">
 						<input id="calculate_button" type="submit" value="Calculate" />
 					</div>

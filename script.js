@@ -30,15 +30,25 @@ const createTableRows = (results) => {
 const onCalculate = (event) => {
 	const diameter1 = parseFloat(document.getElementById("diameter_1").value);
 	const diameter2 = parseFloat(document.getElementById("diameter_2").value);
+	const degreeStart = parseFloat(document.getElementById("degreeStart").value);
 
 	if (diameter1 === "" || diameter2 === "") return;
 
 	if (diameter1 < diameter2) {
+		inputError.innerHTML = "Input the larger diameter in 'Diameter 1' input field";
 		inputError.style.display = "initial";
 		event.preventDefault();
 		return;
 	}
 
+	if (degreeStart > 90) {
+		inputError.innerHTML = "The start degree must be less than or equal to 90";
+		inputError.style.display = "initial";
+		event.preventDefault();
+		return;
+	}
+
+	inputError.innerHTML = "";
 	inputError.style.display = "none";
 	event.preventDefault();
 

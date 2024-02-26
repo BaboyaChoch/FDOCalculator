@@ -49,6 +49,13 @@ body {
 	color: red;
 	display: none;
 }
+#resultsDisclaimer {
+	display: flex;
+	align-items: center;
+	margin: 16px;
+	gap: 16px;
+	font-style: italic;
+}
 label {
 	font-weight: bold;
 }

@@ -12,7 +12,7 @@ class FDOCalculator {
 		let TARGET_FEMORAL_ROTATIONS_IN_DEGREES = [];
 
 		const results = new Map();
-		const arrayLength = Math.ceil(90 / degreeStep);
+		const arrayLength = Math.ceil((91 - degreeStart) / degreeStep);
 
 		if (degreeStart === 0) {
 			TARGET_FEMORAL_ROTATIONS_IN_DEGREES = Array.from({ length: arrayLength }, (_, i) => degreeStep * (i + 1));
