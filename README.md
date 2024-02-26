@@ -1,4 +1,4 @@
-### [Click here](https://baboyachoch.github.io/public_lab/) to view sample web page, using mocked data, web page
+### [Click here](https://baboyachoch.github.io/FDOCalculator/) to view sample web page, using mocked data, web page
 
 ### How to run example python script 
   #### Option 1: Locally
